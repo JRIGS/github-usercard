@@ -124,4 +124,7 @@ body {
 }
 
 
-
+.publicRepoDiv {
+  border: #2cb5e8 1px solid;
+  font-size: 14px;
+}

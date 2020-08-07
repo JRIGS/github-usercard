@@ -84,6 +84,10 @@ const followersArray = ["danieltantonio","mhmulford0","chrisjcorbin","BrettMcAda
     const followersListElement = document.createElement('p')
     const following = document.createElement('p')
     const bio = document.createElement('p')
+    //stretch
+    const publicRepoDiv = document.createElement('div')
+    const publicRepo = document.createElement('p')
+
 
     card.appendChild(img)
     card.appendChild(cardInfo)
@@ -97,10 +101,17 @@ const followersArray = ["danieltantonio","mhmulford0","chrisjcorbin","BrettMcAda
     cardInfo.appendChild(following)
     cardInfo.appendChild(bio)
 
+    cardInfo.appendChild(publicRepoDiv)
+    publicRepoDiv.appendChild(publicRepo)
+
+
+
     card.classList.add("card")
     cardInfo.classList.add("card-info")
     name.classList.add("name")
     username.classList.add("username")
+    publicRepoDiv.classList.add("publicRepoDiv")
+    publicRepo.classList.add("publicRepo")
 
     img.src = cardObject.avatar_url
     name.textContent = cardObject.name
@@ -110,18 +121,20 @@ const followersArray = ["danieltantonio","mhmulford0","chrisjcorbin","BrettMcAda
     followers.textContent = cardObject.followers
     following.textContent = cardObject.following
     bio.textContent = cardObject.bio
-    //all the data is stored into each individual card, selectCard is the destination for the populating items
+    publicRepo.innerHTML = `Amount of public repos: ${cardObject.public_repos}`    //all the data is stored into each individual card, selectCard is the destination for the populating items
     selectCard.appendChild(card)
 
+    console.log(cardObject);
+
     //stretch
-    cardObject.then(response =>{
-      const followersList = response.data.followers_url;
-      const followersListData = axios.get(followersList)
+    // cardObject.then(response =>{
+    //   const followersList = response.data.followers_url;
+    //   const followersListData = axios.get(followersList)
       
-      followersListData.then(response => {
-        console.log(response.data);
-      })
-    })
+    //   followersListData.then(response => {
+    //     console.log(response.data);
+    //   })
+    // })
 
     return card
   }
